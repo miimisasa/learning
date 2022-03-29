@@ -252,6 +252,8 @@ public class LessonD {
         return Arrays.toString(generalArray);
     }
 
+    //11. Вернуть количество повторяющихся значений в массиве (в виде число 5 - 3 раза)
+    
     public static String getCountRepeatNumbers(int[] array) {
         int[] arrUniqueNumbers = new int[getSizeForNewArrayUnicNumber(array)];
 
@@ -273,7 +275,6 @@ public class LessonD {
         return result;
     }
 
-    //11. Вернуть количество повторяющихся значений в массиве (в виде число 5 - 3 раза)
     public static boolean checkExistsNumber(int[] arr, int value) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == value) return true;
@@ -305,21 +306,6 @@ public class LessonD {
         }
         return res;
     } //метод для подсчета уникальных чисел в массиве
-
-    public static void checkExistsUnicNumber(int[] array) {
-        int[] bufferUnicArr = new int[getSizeForNewArrayUnicNumber(array)];//используем метод чтобы указать размер для массива только! с уникальными числами
-        int number = 0;
-        for (int i = 0; i < array.length; i++) {
-            number = array[i];
-            for (int j = 0; j < array.length + 1; j++) {
-                if (number != bufferUnicArr[j]) {
-                    bufferUnicArr[i] = number;
-                }
-                System.out.println(Arrays.toString(bufferUnicArr));
-            }
-        }
-    }
-
 }
 
 
