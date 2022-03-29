@@ -1,6 +1,6 @@
 package felia.lessons;
 
-public class LessonGB1 {
+public class LessonGBH1 {
 
     // Создать переменные всех пройденных типов данных и инициализировать их значения.
     public static void main(String[] args) {
