@@ -7,7 +7,7 @@ public class LessonGBH2 {
         int[] array = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
         System.out.println("Замена в массиве 0 на 1 и наоборот: " + Arrays.toString(changeNullToOne(array)));
         int[] array1 = new int[8];
-        fullArray();
+        fullArray(array1);
         int[] arr = {1, 5, 32, 2, 4, 6, 8, 23, 4, 0, 6, 7, 2, 6, 8, 5, 3, 55, 8, 93, 44, 66};
         multiplyNumbers(arr);
         int size = 6;
@@ -32,8 +32,7 @@ public class LessonGBH2 {
     //Задание №2
 
     //Задать пустой целочисленный массив размером 8. С помощью цикла заполнить его значениями 0 3 6 9 12 15 18 21;
-    public static void fullArray() {
-        int[] array1 = new int[8];
+    public static void fullArray(int[] array1) {
         for (int a = 0, j = 0; a < array1.length; a++, j += 3)
             array1[a] = j;
         System.out.println("Последовательность в цикле с шагом 3: " + Arrays.toString(array1));
