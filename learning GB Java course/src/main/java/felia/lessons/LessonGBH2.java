@@ -2,7 +2,7 @@ package felia.lessons;
 
 import java.util.Arrays;
 
-public class LessonGB2 {
+public class LessonGBH2 {
     public static void main(String[] args) {
         int[] array = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
         System.out.println("Замена в массиве 0 на 1 и наоборот: " + Arrays.toString(changeNullToOne(array)));
