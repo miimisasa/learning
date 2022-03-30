@@ -31,7 +31,7 @@ public class LessonGBH4 {
         System.out.println("Выберите количество фишек для победы от 2 до " + SIZE);
         SIZE_GAME_WIN = scanner.nextInt();
         System.out.println("Вы выбрали победу при нахождении " + SIZE_GAME_WIN + "фишек подряд");
-        if ( SIZE_GAME_WIN < 3 && SIZE_GAME_WIN>99) System.out.println("Пожалуйста, введите число от 3 до ");
+        if ( SIZE_GAME_WIN < 3 && SIZE_GAME_WIN>99) System.out.println("Пожалуйста, введите число от 3 до " + SIZE);
 
         }
 
