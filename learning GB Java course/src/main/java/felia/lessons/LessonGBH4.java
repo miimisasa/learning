@@ -13,7 +13,7 @@ public class LessonGBH4 {
     public static final char DOT_EMPTY = '.';
     public static final char DOT_X = 'X';
     public static final char DOT_O = 'O';
-    public static final int SIZE_GAME_WIN = 5;
+    public static int SIZE_GAME_WIN = scanner.nextInt();
 
     public static void main(String[] args) {
         isStartGame();
@@ -21,9 +21,16 @@ public class LessonGBH4 {
 
     public static void isStartGame() {
         chooseMapSize();
+        chooseWinSize();
         initMap();
         printMap();
         isResultOfGame();
+    }
+
+    private static void chooseWinSize() {
+        System.out.println("Выберите количество фишек для победы");
+        SIZE_GAME_WIN = scanner.nextInt();
+        System.out.println("Вы выбрали победу при нахождении " + SIZE_GAME_WIN + "фишек подряд");
     }
 
     public static void chooseMapSize() {
@@ -183,7 +190,7 @@ public class LessonGBH4 {
                     int k = (SIZE - 1) - i;
                     int l = j + i;
                     if (k >= 0 && l < SIZE) {
-                        if (map[l][k] == dot) {                     // проверяем побочную диагональ от центральной оси вниз на возможную победу
+                        if (map[l][k] == dot) {
                             diagonals++;
                         } else if (map[l][k] != dot && diagonals < SIZE_GAME_WIN) {
                             diagonals = 0;
@@ -216,4 +223,3 @@ public class LessonGBH4 {
 }
 
 }
-
