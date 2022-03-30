@@ -13,7 +13,7 @@ public class LessonGBH4 {
     public static final char DOT_EMPTY = '.';
     public static final char DOT_X = 'X';
     public static final char DOT_O = 'O';
-    public static int SIZE_GAME_WIN = scanner.nextInt();
+    public static int SIZE_GAME_WIN;
 
     public static void main(String[] args) {
         isStartGame();
@@ -28,10 +28,12 @@ public class LessonGBH4 {
     }
 
     private static void chooseWinSize() {
-        System.out.println("Выберите количество фишек для победы");
+        System.out.println("Выберите количество фишек для победы от 2 до " + SIZE);
         SIZE_GAME_WIN = scanner.nextInt();
         System.out.println("Вы выбрали победу при нахождении " + SIZE_GAME_WIN + "фишек подряд");
-    }
+        if ( SIZE_GAME_WIN < 3 && SIZE_GAME_WIN>99) System.out.println("Пожалуйста, введите число от 3 до ");
+
+        }
 
     public static void chooseMapSize() {
         System.out.println("Выберите размер поля размером от 3х3 до 99х99. Введенное значение N будет использовано в качестве NхN");
