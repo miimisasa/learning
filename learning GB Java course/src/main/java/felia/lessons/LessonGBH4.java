@@ -51,9 +51,9 @@ public class LessonGBH4 {
         while (true) {
             try {
                 SIZE_GAME_WIN = Integer.parseInt(scanner.nextLine());
-                if (SIZE > 3 && SIZE < 99) {
+                if (SIZE_GAME_WIN > 3 && SIZE_GAME_WIN < 99) {
                     System.out.println("Вы выбрали победу при " + SIZE_GAME_WIN + " фишках подряд");
-                } else  throw new IllegalArgumentException("Сказали же " + "от 3 до 99");
+                } else  throw new IllegalArgumentException("Сказали же от 2 до 99");
                 break;
             } catch (NumberFormatException nfe) {
                 System.out.print("Кажется, вы не учили что такое цифры...Выберите количество фишек для победы от 2 до " + SIZE);
@@ -245,4 +245,3 @@ public class LessonGBH4 {
     }
 
 }
-
