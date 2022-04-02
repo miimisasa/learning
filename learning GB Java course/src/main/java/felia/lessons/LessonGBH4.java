@@ -1,5 +1,7 @@
 package felia.lessons;
 
+import javafx.scene.chart.ScatterChart;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -27,18 +29,38 @@ public class LessonGBH4 {
         isResultOfGame();
     }
 
-    private static void chooseWinSize() {
-        System.out.println("Выберите количество фишек для победы от 2 до " + SIZE);
-        SIZE_GAME_WIN = scanner.nextInt();
-        System.out.println("Вы выбрали победу при нахождении " + SIZE_GAME_WIN + "фишек подряд");
-        if ( SIZE_GAME_WIN < 3 && SIZE_GAME_WIN>99) System.out.println("Пожалуйста, введите число от 3 до " + SIZE);
-
-        }
 
     public static void chooseMapSize() {
         System.out.println("Выберите размер поля размером от 3х3 до 99х99. Введенное значение N будет использовано в качестве NхN");
-        SIZE = scanner.nextInt();
-        System.out.println("Вы выбрали поле размером: " + SIZE + "х" + SIZE);
+
+        while (true) {
+            try {
+                SIZE = Integer.parseInt(scanner.nextLine());
+                if (SIZE > 3 && SIZE < 99) {
+                    System.out.println("Вы выбрали поле размером: " + SIZE + "х" + SIZE);
+                } else  throw new IllegalArgumentException("Сказали же " + "от 3 до 99");
+                break;
+            } catch (NumberFormatException nfe) {
+                System.out.print("Кажется, вы не учили что такое цифры...Выберите размер поля от 3х3 до 99х99.");
+            }
+        }
+        }
+
+
+
+    private static void chooseWinSize() {
+        System.out.println(" Выберите количество фишек для победы от 2 до " + SIZE);
+        while (true) {
+            try {
+                SIZE_GAME_WIN = Integer.parseInt(scanner.nextLine());
+                if (SIZE > 3 && SIZE < 99) {
+                    System.out.println("Вы выбрали победу при " + SIZE_GAME_WIN + " фишках подряд");
+                } else  throw new IllegalArgumentException("Сказали же " + "от 3 до 99");
+                break;
+            } catch (NumberFormatException nfe) {
+                System.out.print("Кажется, вы не учили что такое цифры...Выберите количество фишек для победы от 2 до " + SIZE);
+            }
+        }
     }
 
     public static void initMap() {
@@ -186,42 +208,43 @@ public class LessonGBH4 {
             }
         }
 
-            for (int j = 0; j < SIZE; j++) {
-                diagonals = 0;
-                for (int i = 0; i < SIZE; i++) {
-                    int k = (SIZE - 1) - i;
-                    int l = j + i;
-                    if (k >= 0 && l < SIZE) {
-                        if (map[l][k] == dot) {
-                            diagonals++;
-                        } else if (map[l][k] != dot && diagonals < SIZE_GAME_WIN) {
-                            diagonals = 0;
-                        }
-                    }
-                    if (diagonals >= SIZE_GAME_WIN) {
-                        return true;
+        for (int j = 0; j < SIZE; j++) {
+            diagonals = 0;
+            for (int i = 0; i < SIZE; i++) {
+                int k = (SIZE - 1) - i;
+                int l = j + i;
+                if (k >= 0 && l < SIZE) {
+                    if (map[l][k] == dot) {
+                        diagonals++;
+                    } else if (map[l][k] != dot && diagonals < SIZE_GAME_WIN) {
+                        diagonals = 0;
                     }
                 }
+                if (diagonals >= SIZE_GAME_WIN) {
+                    return true;
+                }
             }
+        }
 
-            for (int j = 1; j < SIZE; j++) {
-                diagonals = 0;
-                for (int i = 0; i < SIZE; i++) {
-                    int k = (SIZE - 1) - j - i;
-                    if (k >= 0) {
-                        if (map[i][k] == dot) {
-                            diagonals++;
-                        } else if (map[i][k] != dot && diagonals < SIZE_GAME_WIN) {
-                            diagonals = 0;
-                        }
-                    }
-                    if (diagonals >= SIZE_GAME_WIN) {
-                        return true;
+        for (int j = 1; j < SIZE; j++) {
+            diagonals = 0;
+            for (int i = 0; i < SIZE; i++) {
+                int k = (SIZE - 1) - j - i;
+                if (k >= 0) {
+                    if (map[i][k] == dot) {
+                        diagonals++;
+                    } else if (map[i][k] != dot && diagonals < SIZE_GAME_WIN) {
+                        diagonals = 0;
                     }
                 }
+                if (diagonals >= SIZE_GAME_WIN) {
+                    return true;
+                }
             }
+        }
 
         return false;
-}
+    }
 
 }
+
