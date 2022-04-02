@@ -1,7 +1,5 @@
 package felia.lessons;
 
-import javafx.scene.chart.ScatterChart;
-
 import java.util.Random;
 import java.util.Scanner;
 
