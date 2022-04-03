@@ -36,14 +36,14 @@ public class LessonGBH4 {
                 SIZE = Integer.parseInt(scanner.nextLine());
                 if (SIZE > 3 && SIZE < 99) {
                     System.out.println("Вы выбрали поле размером: " + SIZE + "х" + SIZE);
-                } else  throw new IllegalArgumentException("Сказали же " + "от 3 до 99");
-                break;
+                    break;
+                } else
+                    System.out.println("Сказали же " + "от 3 до 99");
             } catch (NumberFormatException nfe) {
-                System.out.print("Кажется, вы не учили что такое цифры...Выберите размер поля от 3х3 до 99х99.");
+                System.out.println("Кажется, вы не учили что такое цифры...Выберите размер поля от 3х3 до 99х99.");
             }
         }
-        }
-
+    }
 
 
     private static void chooseWinSize() {
@@ -51,12 +51,13 @@ public class LessonGBH4 {
         while (true) {
             try {
                 SIZE_GAME_WIN = Integer.parseInt(scanner.nextLine());
-                if (SIZE_GAME_WIN > 3 && SIZE_GAME_WIN < 99) {
+                if (SIZE_GAME_WIN > 2 && SIZE_GAME_WIN < SIZE) {
                     System.out.println("Вы выбрали победу при " + SIZE_GAME_WIN + " фишках подряд");
-                } else  throw new IllegalArgumentException("Сказали же от 2 до 99");
-                break;
+                    break;
+                } else
+                    System.out.println("Сказали же от 2 до " + SIZE);
             } catch (NumberFormatException nfe) {
-                System.out.print("Кажется, вы не учили что такое цифры...Выберите количество фишек для победы от 2 до " + SIZE);
+                System.out.println("Кажется, вы не учили что такое цифры...Выберите количество фишек для победы от 2 до " + SIZE);
             }
         }
     }
@@ -117,11 +118,37 @@ public class LessonGBH4 {
     }
 
     public static void humanTurn() {
-        int x, y;
+        int x = 0;
+        int y = 0;
         do {
-            System.out.println("Введите координаты ячейки в виде (х;у)");
-            x = scanner.nextInt() - 1;
-            y = scanner.nextInt() - 1;
+            while (true) {
+                System.out.println("Введите координаты ячейки по X");
+                try {
+                    x = Integer.parseInt(scanner.nextLine());
+                    x = x - 1;
+                    if (x <= 0 || x > SIZE) {
+                        System.out.println("Сказали же от 1 до " + SIZE);
+                    } else {
+                        break;
+                    }
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Кажется, вы не учили что такое цифры...Введите число от 1 до " + SIZE);
+                }
+            }
+                while (true) {
+                    System.out.println("Введите координаты ячейки по Y");
+                    try {
+                        y = Integer.parseInt(scanner.nextLine());
+                        y = y - 1;
+                        if (y <= 0 || y > SIZE) {
+                            System.out.println("Сказали же от 1 до " + SIZE);
+                        } else {
+                            break;
+                        }
+                    } catch (NumberFormatException nfe) {
+                        System.out.println("Кажется, вы не учили что такое цифры...Введите число от 1 до " + SIZE);
+                    }
+                }
         } while (!cellIsEmpty(x, y));
         map[y][x] = DOT_X;
     }
@@ -139,14 +166,16 @@ public class LessonGBH4 {
     public static boolean isMapFull() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                if (map[i][j] == DOT_EMPTY) return false;
+                if (map[i][j] == DOT_EMPTY)
+                    return false;
             }
         }
         return true;
     }
 
     public static boolean cellIsEmpty(int x, int y) {
-        if (x < 0 || y < 0 || x >= SIZE || y >= SIZE) return false;
+        if (x < 0 || y < 0 || x >= SIZE || y >= SIZE)
+            return false;
         return map[y][x] == DOT_EMPTY;
     }
 
