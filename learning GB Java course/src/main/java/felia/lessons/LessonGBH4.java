@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class LessonGBH4 {
     public static Scanner scanner = new Scanner(System.in);
     public static Random random = new Random();
+    public static int number;
 
     public static int SIZE;
     public static char[][] map;
@@ -30,34 +31,24 @@ public class LessonGBH4 {
 
     public static void chooseMapSize() {
         System.out.println("Выберите размер поля размером от 3х3 до 99х99. Введенное значение N будет использовано в качестве NхN");
-
-        while (true) {
-            try {
-                SIZE = Integer.parseInt(scanner.nextLine());
-                if (SIZE > 3 && SIZE < 99) {
-                    System.out.println("Вы выбрали поле размером: " + SIZE + "х" + SIZE);
-                    break;
-                } else
-                    System.out.println("Сказали же " + "от 3 до 99");
-            } catch (NumberFormatException nfe) {
-                System.out.println("Кажется, вы не учили что такое цифры...Выберите размер поля от 3х3 до 99х99.");
+        while(true) {
+            String inputData = scanner.nextLine();
+            if(checkInputData(inputData, 3, 99)){
+                SIZE = Integer.parseInt(inputData);
+                System.out.println("Вы выбрали поле размером: " + SIZE + "х" + SIZE);
+                break;
             }
         }
     }
 
-
     private static void chooseWinSize() {
-        System.out.println(" Выберите количество фишек для победы от 2 до " + SIZE);
+        System.out.println("Выберите количество фишек для победы от 2 до " + SIZE);
         while (true) {
-            try {
-                SIZE_GAME_WIN = Integer.parseInt(scanner.nextLine());
-                if (SIZE_GAME_WIN > 2 && SIZE_GAME_WIN < SIZE) {
-                    System.out.println("Вы выбрали победу при " + SIZE_GAME_WIN + " фишках подряд");
-                    break;
-                } else
-                    System.out.println("Сказали же от 2 до " + SIZE);
-            } catch (NumberFormatException nfe) {
-                System.out.println("Кажется, вы не учили что такое цифры...Выберите количество фишек для победы от 2 до " + SIZE);
+            String inputData = scanner.nextLine();
+            if(checkInputData(inputData, 2, SIZE)){
+                SIZE_GAME_WIN = Integer.parseInt(inputData);
+                System.out.println("Вы выбрали победу при " + SIZE_GAME_WIN + " фишках подряд");
+                break;
             }
         }
     }
@@ -77,14 +68,14 @@ public class LessonGBH4 {
             if (i == 0) {
                 System.out.print("\t");
             } else {
-                System.out.print(i + " ");
+                System.out.print(i + "\t");
             }
         }
         System.out.println();
         for (int i = 0; i < map.length; i++) {
             System.out.print((i + 1) + "\t");
             for (int j = 0; j < map.length; j++) {
-                System.out.print(map[i][j] + " ");
+                System.out.print(map[i][j] + "\t");
             }
             System.out.println();
         }
@@ -117,40 +108,29 @@ public class LessonGBH4 {
         System.out.println("Игра закончена");
     }
 
-    public static void humanTurn() {
+    public static boolean humanTurn() {
         int x = 0;
         int y = 0;
         do {
             while (true) {
                 System.out.println("Введите координаты ячейки по X");
-                try {
-                    x = Integer.parseInt(scanner.nextLine());
-                    x = x - 1;
-                    if (x <= 0 || x > SIZE) {
-                        System.out.println("Сказали же от 1 до " + SIZE);
-                    } else {
-                        break;
-                    }
-                } catch (NumberFormatException nfe) {
-                    System.out.println("Кажется, вы не учили что такое цифры...Введите число от 1 до " + SIZE);
+                String inputData = scanner.nextLine();
+                if (checkInputData(inputData, 0, SIZE)) {
+                    break;
                 }
             }
-                while (true) {
-                    System.out.println("Введите координаты ячейки по Y");
-                    try {
-                        y = Integer.parseInt(scanner.nextLine());
-                        y = y - 1;
-                        if (y <= 0 || y > SIZE) {
-                            System.out.println("Сказали же от 1 до " + SIZE);
-                        } else {
-                            break;
-                        }
-                    } catch (NumberFormatException nfe) {
-                        System.out.println("Кажется, вы не учили что такое цифры...Введите число от 1 до " + SIZE);
-                    }
+
+            while (true) {
+                System.out.println("Введите координаты ячейки по Y");
+                String inputData = scanner.nextLine();
+                if (checkInputData(inputData, 0, SIZE)) {
+                    break;
                 }
+
+            }
         } while (!cellIsEmpty(x, y));
         map[y][x] = DOT_X;
+        return false;
     }
 
     public static void aiTurn() {
@@ -273,4 +253,17 @@ public class LessonGBH4 {
         return false;
     }
 
+    public static boolean checkInputData (String inputData, int min, int max) {
+        try {
+            number = Integer.parseInt(inputData);
+            if (number > min && number < max) {
+                return true;
+            } else
+                System.out.println("Сказали же от " + min +" до " + max);
+        } catch (NumberFormatException nfe) {
+            System.out.println("Кажется, вы не учили что такое цифры...");
+        }
+        return false;
+    }
 }
+
