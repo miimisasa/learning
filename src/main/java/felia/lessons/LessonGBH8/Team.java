@@ -35,6 +35,9 @@ public class Team {
                 if (team.get(i).getStatusOfSportsman()) {
                     System.out.println(team.get(i).getJumpResult(obstacle.getWallHeight()));
                 }
+                if (team.get(i).getStatusOfSportsman()){
+                    System.out.println(team.get(i).getSwimResult(obstacle.getPullLenght()));
+                }
             }
         }
     }
