@@ -1,3 +1,4 @@
+
 package felia.lessons;
 
 import java.util.Arrays;
@@ -263,7 +264,8 @@ public class LessonD {
             if (!checkExistsNumber(arrUniqueNumbers, array[i])) {
                 int count = 0;
                 for (int j = 0; j < array.length; j++) {
-                    if (array[i] == array[j]) count++;
+                    if (array[i] == array[j])
+                        count++;
                 }
                 arrUniqueNumbers[currentIndex] = array[i];
                 currentIndex++;
@@ -277,7 +279,8 @@ public class LessonD {
     //11. Вернуть количество повторяющихся значений в массиве (в виде число 5 - 3 раза)
     public static boolean checkExistsNumber(int[] arr, int value) {
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == value) return true;
+            if (arr[i] == value)
+                return true;
         }
         return false;
     }
@@ -305,7 +308,9 @@ public class LessonD {
             }
         }
         return res;
-    } //метод для подсчета уникальных чисел в массиве
+    }
+
+    //метод для подсчета уникальных чисел в массиве
 
 //    public static void checkExistsUnicNumber(int[] array) {
 //        int[] bufferUnicArr = new int[getSizeForNewArrayUnicNumber(array)];//используем метод чтобы указать размер для массива только! с уникальными числами
@@ -322,8 +327,3 @@ public class LessonD {
 //    }
 
 }
-
-
-
-
-
