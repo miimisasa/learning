@@ -6,14 +6,13 @@ public class LessonGBH2 {
     public static void main(String[] args) {
         int[] array = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
         System.out.println("Замена в массиве 0 на 1 и наоборот: " + Arrays.toString(changeNullToOne(array)));
-        int[] array1 = new int[8];
-        fullArray(array1);
+        fullArray();
         int[] arr = {1, 5, 32, 2, 4, 6, 8, 23, 4, 0, 6, 7, 2, 6, 8, 5, 3, 55, 8, 93, 44, 66};
-        multiplyNumbers(arr);
-        int size = 6;
+        multiplyNumbers();
+        int size = 4;
         fullOneDiagonal(size);
         System.out.println("Минимальное и максимальное значения массива: " + Arrays.toString(searchMinAndMax(arr)));
-        System.out.println("Cумма левой и правой части массива равны: " + sumLeftAndRight());
+        System.out.println("Cумма левой и правой части массива равны: " + sumLeftAndRight(arr));
         System.out.println("Cумма левой и правой части массива равны(другой способ): " + sumLeftAndRight2(arr));
         System.out.println(Arrays.toString(moveArray(array, -3)));
     }
@@ -32,8 +31,8 @@ public class LessonGBH2 {
     //Задание №2
 
     //Задать пустой целочисленный массив размером 8. С помощью цикла заполнить его значениями 0 3 6 9 12 15 18 21;
-    public static void fullArray(int[] array1) {
-//        int[] array1 = new int[8];
+    public static void fullArray() {
+        int[] array1 = new int[8];
         for (int a = 0, j = 0; a < array1.length; a++, j += 3)
             array1[a] = j;
         System.out.println("Последовательность в цикле с шагом 3: " + Arrays.toString(array1));
@@ -42,7 +41,8 @@ public class LessonGBH2 {
     //Задание №3
 
     //Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ] пройти по нему циклом, и числа меньше 6 умножить на 2;
-    public static void multiplyNumbers(int[] arr) {
+    public static void multiplyNumbers() {
+        int [] arr = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         for (int g = 0; g < arr.length; g++) {
             if (arr[g] < 6) {
                 arr[g] *= 2;
@@ -56,13 +56,16 @@ public class LessonGBH2 {
     //Создать квадратный двумерный целочисленный массив (количество строк и столбцов одинаковое),
     // и с помощью цикла(-ов) заполнить его диагональные элементы единицами;
     public static void fullOneDiagonal(int size) {
-        int[][] sqrArray = new int[size][size];
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                sqrArray[i][j] = (i == j || j == (size - i - 1)) ? 1 : (int) (Math.random() * 100);
-                System.out.print (sqrArray[i][j] + "\t");
+        int[][] arr = new int[size][size];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i][i] = 1;
+            arr[i][arr.length - i - 1] = 1;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                System.out.print(arr[i][j] + " ");
             }
-            System.out.println(" ");
+            System.out.println();
         }
     }
 
@@ -86,8 +89,7 @@ public class LessonGBH2 {
     // Написать метод, в который передается не пустой одномерный целочисленный массив, метод должен вернуть true,
     // если в массиве есть место, в котором сумма левой и правой части массива равны.
 
-    static boolean sumLeftAndRight () {
-        int [] arr = {1, 5, 32, 2, 4, 6, 8, 23, 4, 0, 6, 7, 2, 6, 8, 5, 3, 55, 8, 93, 44, 66};
+    static boolean sumLeftAndRight (int[] arr) {
         if (arr == null || arr.length < 2)
             return false;
         int sumarray = 0, sumLeft = 0;
