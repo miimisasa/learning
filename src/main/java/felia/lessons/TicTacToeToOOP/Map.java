@@ -12,7 +12,7 @@ public class Map {
     public static int SIZE_GAME_WIN;
     private static int number;
 
-    public static void chooseMapSize() {
+    public void chooseMapSize() {
         System.out.println("Выберите размер поля размером от 3х3 до 99х99. Введенное значение N будет использовано в качестве NхN");
         while(true) {
             String inputData = scanner.nextLine();
@@ -24,7 +24,7 @@ public class Map {
         }
     }
 
-    public static void chooseWinSize() {
+    public void chooseWinSize() {
         System.out.println("Выберите количество фишек для победы от 2 до " + SIZE);
         while (true) {
             String inputData = scanner.nextLine();
@@ -36,7 +36,7 @@ public class Map {
         }
     }
 
-    public static void initMap() {
+    public void initMap() {
         map = new char[SIZE][SIZE];
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
@@ -46,7 +46,7 @@ public class Map {
 
     }
 
-    public static void printMap() {
+    public void printMap() {
         for (int i = 0; i <= map.length; i++) {
             if (i == 0) {
                 System.out.print("\t");
@@ -65,7 +65,7 @@ public class Map {
         System.out.println();
     }
 
-    public static boolean checkInputData (String inputData, int min, int max) {
+    public boolean checkInputData (String inputData, int min, int max) {
         try {
             number = Integer.parseInt(inputData);
             if (number >= min && number <= max) {
