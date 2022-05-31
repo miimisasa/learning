@@ -6,7 +6,10 @@ import felia.lessons.TicTacToeToOOP.actions.CheckOfNumbers;
 import static felia.lessons.LessonGBH4.LessonGBH4.scanner;
 
 public class Player extends Map {
-    public static void humanTurn() {
+
+    CheckOfNumbers check = new CheckOfNumbers();
+
+    public void humanTurn() {
         int x, y;
         do {
             while (true) {
@@ -27,7 +30,7 @@ public class Player extends Map {
                 }
             }
 
-        } while (CheckOfNumbers.cellIsEmpty(x, y));
+        } while (check.cellIsEmpty(x, y));
 
         map[y][x] = DOT_X;
     }
