@@ -3,13 +3,30 @@ package felia.lessons.ArrayRemakeToOOP;
 import java.util.Arrays;
 
 public class SortOfArrays {
+    int[] array = {1, 5, 32, 2, 4, 6, 8, 23, 4, 0, 6, 7, 2, 6, 8, 5, 3, 55, 8, 93, 44, 66};
 
-    static int[] sort(int[] array) {
+    public static String sort;
+    public static String sortMinToMax;
+    public static String sortMaxToMin;
+    public static String oddNumbers;
+    public static String evenNumbers;
+    public static String sortArrayFromEvenToNotEven;
+
+    public SortOfArrays() {
+        this.sort = Arrays.toString(sort(array));
+        this.sortMinToMax = Arrays.toString(array);
+        this.sortMaxToMin = Arrays.toString(array);
+        this.oddNumbers = Arrays.toString(oddNumbers(array));
+        this.evenNumbers = Arrays.toString(evenNumbers(array));
+        this.sortArrayFromEvenToNotEven = Arrays.toString(sortArrayFromEvenToNotEven(array));
+    }
+
+    int[] sort(int[] array) {
         Arrays.sort(array);
         return array;
     }
 
-    public static int[] sortMinToMax(int[] array) {
+    int[] sortMinToMax(int[] array) {
         boolean pin = false;
         while (pin == false) {
             pin = true;
@@ -29,7 +46,7 @@ public class SortOfArrays {
         return array;
     }
 
-    public static int[] sortMaxToMin(int[] array) {
+    int[] sortMaxToMin(int[] array) {
         boolean pin = false;
         while (pin == false) {
             pin = true;
@@ -48,7 +65,7 @@ public class SortOfArrays {
         return array;
     }
 
-    static int[] OddNumbers(int[] array) {
+    int[] oddNumbers(int[] array) {
         int sizeArr = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 != 0) {
@@ -67,7 +84,7 @@ public class SortOfArrays {
         return newArray;
     }
 
-    static int[] EvenNumbers(int[] array) {
+    int[] evenNumbers(int[] array) {
         int sizeArr = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 == 0) {
@@ -86,11 +103,11 @@ public class SortOfArrays {
         return newArray;
     }
 
-    static int[] sortArrayFromEvenToNotEven(int[] array){
+    int[] sortArrayFromEvenToNotEven(int[] array){
         return getGeneralArray(array);
     }
 
-    static int getSizeNotEvenArray(int[] array) {
+    int getSizeNotEvenArray(int[] array) {
         int sizeNotEvenArr = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 != 0) {
@@ -100,7 +117,7 @@ public class SortOfArrays {
         return sizeNotEvenArr;
     }
 
-    static int getCountNotEven(int[] array, int[] newNotEvenArray) {
+    int getCountNotEven(int[] array, int[] newNotEvenArray) {
         int countNotEven = 0;
         for (int j = 0; j < array.length; j++) {
             if (array[j] % 2 != 0) {
@@ -111,7 +128,7 @@ public class SortOfArrays {
         return countNotEven;
     }
 
-    static int[] getNewNotEvenOrEvenArray(int[] array) {
+    int[] getNewNotEvenOrEvenArray(int[] array) {
         boolean pin = false;
         while (pin == false) {
             pin = true;
@@ -131,7 +148,7 @@ public class SortOfArrays {
         return array;
     }
 
-    static int[] getNotEvenArray(int[] array) {
+    int[] getNotEvenArray(int[] array) {
         int sizeNotEvenArr = getSizeNotEvenArray(array);
         int[] newNotEvenArray = new int[sizeNotEvenArr];
         int countNotEven = getCountNotEven(array, newNotEvenArray);
@@ -139,7 +156,7 @@ public class SortOfArrays {
         return newNotEvenArray;
     }
 
-    static int[] getEvenArray(int[] array) {
+    int[] getEvenArray(int[] array) {
         int sizeEvenArray = getSizeEvenArray(array);
         int[] newEvenArray = new int[sizeEvenArray];
         int countEven = getEvenCount(array, newEvenArray);
@@ -148,7 +165,7 @@ public class SortOfArrays {
 
     }
 
-    static int getSizeEvenArray(int[] array) {
+    int getSizeEvenArray(int[] array) {
         int sizeArr = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 == 0) {
@@ -158,7 +175,7 @@ public class SortOfArrays {
         return sizeArr;
     }
 
-    static int getEvenCount(int[] array, int[] newEvenArray) {
+    int getEvenCount(int[] array, int[] newEvenArray) {
         int count = 0;
 
         for (int j = 0; j < array.length; j++) {
@@ -170,7 +187,7 @@ public class SortOfArrays {
         return count;
     }
 
-    static int[] getGeneralArray(int[] array) {
+    int[] getGeneralArray(int[] array) {
         int[] generalArray = new int[getEvenArray(array).length + getNotEvenArray(array).length];
         int countGeneral = 0;
         for (int i = 0; i < getEvenArray(array).length; i++) {
