@@ -4,7 +4,7 @@ import felia.lessons.TicTacToeToOOP.Map;
 
 public class CheckOfNumbers extends Map {
 
-    public static boolean isMapFull() {
+    public boolean isMapFull() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 if (map[i][j] == DOT_EMPTY)
@@ -14,8 +14,8 @@ public class CheckOfNumbers extends Map {
         return true;
     }
 
-    public static boolean cellIsEmpty(int x, int y) {
-        if(map[y][x] == DOT_EMPTY) {
+    public boolean cellIsEmpty(int x, int y) {
+        if (map[y][x] == DOT_EMPTY) {
             return false;
         } else {
             System.out.println("ЭТА ЯЧЕЙКА УЖЕ ЗАНЯТА!");
