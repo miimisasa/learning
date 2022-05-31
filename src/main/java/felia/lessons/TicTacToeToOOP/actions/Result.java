@@ -5,26 +5,32 @@ import felia.lessons.TicTacToeToOOP.members.Computer;
 import felia.lessons.TicTacToeToOOP.members.Player;
 
 public class Result extends Map {
+    CheckOfNumbers check = new CheckOfNumbers();
+    LogicOfGame logic = new LogicOfGame();
+    Player human = new Player();
+    Computer bot = new Computer();
 
-    public static void isResultOfGame() {
+    public void isResultOfGame() {
         while (true) {
-            Player.humanTurn();
+            human.humanTurn();
             printMap();
-            if (LogicOfGame.checkWin(DOT_X)) {
+
+            if (logic.checkWin(DOT_X)) {
                 System.out.println("Поздравляем! Вы победили");
                 break;
             }
-            if (CheckOfNumbers.isMapFull()) {
+            if (check.isMapFull()) {
                 System.out.println("Ничья");
                 break;
             }
-            Computer.aiTurn();
+            bot.aiTurn();
             printMap();
-            if (LogicOfGame.checkWin(DOT_O)) {
+
+            if (logic.checkWin(DOT_O)) {
                 System.out.println("К сожалению, компьютер вас обыграл...");
                 break;
             }
-            if (CheckOfNumbers.isMapFull()) {
+            if (check.isMapFull()) {
                 System.out.println("Ничья");
                 break;
             }
