@@ -4,9 +4,7 @@ import felia.lessons.TicTacToeToOOP.Map;
 
 public class LogicOfGame extends Map {
 
-    public static boolean checkWin(char dot) {
-
-        int horizontal, vertical, diagonal, diagonals;
+    boolean checkWin(char dot) {
         if (checkHorizontalVertical(dot))
             return true;
 
@@ -25,7 +23,7 @@ public class LogicOfGame extends Map {
         return false;
     }
 
-    private static boolean checkReverseDiagonalToLeft(char dot) {
+    boolean checkReverseDiagonalToLeft(char dot) {
         int diagonals;
         for (int j = 1; j < SIZE; j++) {
             diagonals = 0;
@@ -46,7 +44,7 @@ public class LogicOfGame extends Map {
         return false;
     }
 
-    private static boolean checkReversDiagonalToDown(char dot) {
+    boolean checkReversDiagonalToDown(char dot) {
         int diagonals;
         for (int j = 0; j < SIZE; j++) {
             diagonals = 0;
@@ -68,7 +66,7 @@ public class LogicOfGame extends Map {
         return false;
     }
 
-    private static boolean checkMainDiagonalToDown(char dot) {
+    boolean checkMainDiagonalToDown(char dot) {
         int diagonal;
         for (int j = 1; j < SIZE; j++) {
             diagonal = 0;
@@ -89,7 +87,7 @@ public class LogicOfGame extends Map {
         return false;
     }
 
-    private static boolean checkMainDiagonalToRight(char dot) {
+    boolean checkMainDiagonalToRight(char dot) {
         int diagonal;
         for (int j = 0; j < SIZE; j++) {
             diagonal = 0;
@@ -110,7 +108,7 @@ public class LogicOfGame extends Map {
         return false;
     }
 
-    private static boolean checkHorizontalVertical(char dot) {
+    boolean checkHorizontalVertical(char dot) {
         int vertical;
         int horizontal;
         for (int i = 0; i < SIZE; i++) {
