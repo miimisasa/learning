@@ -1,8 +1,23 @@
 package felia.lessons.ArrayRemakeToOOP;
 
-public class SerchElementsInArray {
+import java.util.Arrays;
 
-    static int[] searchMinAndMax(int[] arr) {
+public class SerchElementsInArray {
+    int[] array = {1, 5, 32, 2, 4, 6, 8, 23, 4, 0, 6, 7, 2, 6, 8, 5, 3, 55, 8, 93, 44, 66};
+
+    public static String searchMinAndMax;
+    public static int maxNumber;
+    public static int minNumber;
+    public static boolean findNumber;
+
+    public SerchElementsInArray() {
+        this.searchMinAndMax = Arrays.toString(searchMinAndMax(array));
+        this.maxNumber = maxNumber(array);
+        this.minNumber = minNumber(array);
+        this.findNumber = findNumber( 4, array);
+    }
+
+    int[] searchMinAndMax(int[] arr) {
         int[] minMax = new int[2];
         minMax[0] = minMax[1] = arr[0];
         for (int i = 1; i < arr.length; i++) {
@@ -14,7 +29,7 @@ public class SerchElementsInArray {
         return minMax;
     }
 
-    static int maxNumber(int[] array) {
+    int maxNumber(int[] array) {
         int max = array[0];
         for (int i = 0; i < array.length; i++) {
             if (array[i] > max) {
@@ -24,7 +39,7 @@ public class SerchElementsInArray {
         return max;
     }
 
-    static int minNumber(int[] array) {
+    int minNumber(int[] array) {
         int min = array[0];
         for (int i = 0; i < array.length; i++) {
             if (array[i] < min) {
@@ -34,7 +49,7 @@ public class SerchElementsInArray {
         return min;
     }
 
-    static boolean findNumber(int searchValue, int[] array) {
+    boolean findNumber(int searchValue, int[] array) {
 
         for (int i = 0; i < array.length; i++) {
             if (array[i] == searchValue) {
