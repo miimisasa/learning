@@ -1,14 +1,24 @@
 package felia.lessons.ArrayRemakeToOOP;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class LogicActionsWithArrays {
-    static int n;
-    static int Array[];
-    static int arr = 0;
+    int[] array = {1, 5, 32, 2, 4, 6, 8, 23, 4, 0, 6, 7, 2, 6, 8, 5, 3, 55, 8, 93, 44, 66};
+    public static String changeNullToOne;
+    public static String fullOneDiagonal;
+    public static boolean sumLeftAndRight;
+    public static String moveArray;
+    public static String getCountRepeatNumbers;
 
-    public static int[] changeNullToOne(int[] array) {
+    public LogicActionsWithArrays() {
+        this.changeNullToOne = Arrays.toString(changeNullToOne(array));
+        this.fullOneDiagonal = Arrays.deepToString(fullOneDiagonal(4));
+        this.sumLeftAndRight = sumLeftAndRight(array);
+        this.moveArray = Arrays.toString(moveArray(array,3));
+        this.getCountRepeatNumbers = getCountRepeatNumbers(array);
+    }
+
+    int[] changeNullToOne(int[] array) {
         for (int i = 0; i < array.length; i++) {
             array[i] = (array[i] == 0) ? 1 : 0;
         }
@@ -16,7 +26,7 @@ public class LogicActionsWithArrays {
     }
 
 
-    public static int[][] fullOneDiagonal(int size) {
+    int[][] fullOneDiagonal(int size) {
         int[][] arr = new int[size][size];
         for (int i = 0; i < arr.length; i++) {
             arr[i][i] = 1;
@@ -25,7 +35,7 @@ public class LogicActionsWithArrays {
         return arr;
     }
 
-    public static boolean sumLeftAndRight(int[] arr) {
+    boolean sumLeftAndRight(int[] arr) {
         int left = 0;
         int right = 0;
 
@@ -43,7 +53,7 @@ public class LogicActionsWithArrays {
         return false;
     }
 
-    public static int[] moveArray(int[] array, int value) {
+    int[] moveArray(int[] array, int value) {
         if (value > 0) {
             for (int i = 0; i < value; i++) {
                 moveRight(array);
@@ -58,7 +68,7 @@ public class LogicActionsWithArrays {
         return array;
     }
 
-    public static void moveRight(int[] array) {
+    void moveRight(int[] array) {
         int size = array.length;
         int temp = array[size - 1];
 
@@ -68,7 +78,7 @@ public class LogicActionsWithArrays {
         array[0] = temp;
     }
 
-    public static void moveLeft(int[] array) {
+    void moveLeft(int[] array) {
         int size = array.length;
         int temp = array[0];
 
@@ -78,7 +88,7 @@ public class LogicActionsWithArrays {
         array[size - 1] = temp;
     }
 
-    public static String getCountRepeatNumbers(int[] array) {
+    String getCountRepeatNumbers(int[] array) {
         int[] arrUniqueNumbers = new int[getSizeForNewArrayUnicNumber(array)];
 
         String result = "";
@@ -100,7 +110,7 @@ public class LogicActionsWithArrays {
         return result;
     }
 
-    public static boolean checkExistsNumber(int[] arr, int value) {
+    boolean checkExistsNumber(int[] arr, int value) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == value)
                 return true;
@@ -108,7 +118,7 @@ public class LogicActionsWithArrays {
         return false;
     }
 
-    public static int getSizeForNewArrayUnicNumber(int[] array) {
+    int getSizeForNewArrayUnicNumber(int[] array) {
         int[] newSize = new int[array.length];
         int res = 0;
         int countNum = 0;
